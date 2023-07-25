@@ -3067,6 +3067,17 @@ input, select, textarea {
 		#cta ul.actions {
 			margin-bottom: 0;
 		}
+/* VATSIM Image */
+		.v-image {
+			text-align: center;
+		  }
+		  
+		  .v-image img {
+			max-width: 10%;
+			max-height: 10%;
+		  }
+		  
+
 
 /* Footer */
 
