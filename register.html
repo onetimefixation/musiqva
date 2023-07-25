@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Application</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" type="text/css" href="register.css">
+  <script src="register.js"></script>
+</head>
+<body>    
+  
+  <div class="header-content"></div>
+  <!-- Header -->
+
+
+        <header id="header" class="alt">
+          <!-- Move the logo to the left -->
+          <div class="left-logo-container">
+              <a href="index.html">
+                  <img src="images/qfLogo1nobkg.png" alt="Musiq Virtual Airlines">
+              </a>
+          </div>
+      
+          <nav id="nav">
+              <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <!-- Commented out the other navigation items for simplicity -->
+                  <li><a href="logout.html">Log Out</a></li>
+              </ul>
+          </nav>
+      </header>
+
+  <div class="container">
+    <h1>Registration Application</h1>
+  
+    <form id="form">
+      <label for="firstname">First Name:</label>
+      <input type="text" id="firstname" required><br>
+      
+      <label for="lastname">Last Name:</label>
+      <input type="text" id="lastname" required><br>
+            
+      <label for="lastname">Pilot ID:</label>
+      <input type="text" id="pilotID" required><br>
+      
+      <label for="country">Country:</label>
+      <input type="text" id="country" required><br>
+      
+      <label for="age">Age:</label>
+      <input type="number" id="age" required><br>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" required><br>
+      
+      <label for="location">Preferred Location:</label>
+      <select id="location">
+        <option value="Location 1">Location 1</option>
+        <option value="Location 2">Location 2</option>
+        <option value="Location 3">Location 3</option>
+      </select><br>
+      
+      <label for="additionalinfo">Additional Info:</label>
+      <textarea id="additionalinfo"></textarea><br>
+      
+      <button type="submit">Submit</button>
+    </form>
+  
+    <div id="adminSection" style="display: none;">
+      <h2>Admin Section</h2>
+      <div id="applications"></div>
+    </div>
+  </div>
+</body>
+</html>

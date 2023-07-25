@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add New Flight Info</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" type="text/css" href="register.css">
+  <script src="addnew.js"></script>
+</head>
+<body>
+    
+    <div class="header-content"></div>
+    <!-- Header -->
+
+  <!-- Header -->
+
+
+  <header id="header" class="alt">
+    <!-- Move the logo to the left -->
+    <div class="left-logo-container">
+        <a href="index.html">
+            <img src="images/qfLogo1nobkg.png" alt="Musiq Virtual Airlines">
+        </a>
+    </div>
+
+    <nav id="nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <!-- Commented out the other navigation items for simplicity -->
+            <li><a href="logout.html">Log Out</a></li>
+        </ul>
+    </nav>
+</header>
+    
+  <div class="container">
+    <h1>Add New Flight Information</h1>
+  
+    <form id="newInfoForm">
+      <label for="firstname">First Name:</label>
+      <input type="text" id="firstname" value="firstname prefilled" required><br>
+      
+      <label for="lastname">Last Name:</label>
+      <input type="text" id="lastname" value="lastname prefilled" required><br>
+     
+      <label for="pilotID">Pilot ID:</label>
+      <input type="text" id="pilotID" value="pilotID prefilled" required><br>
+      
+      <label for="origin">Origin:</label>
+      <input type="text" id="origin" required><br>
+      
+      <label for="destination">Destination:</label>
+      <input type="text" id="destination" required><br>
+      
+      <label for="date_">Date (UTC):</label>
+      <input type="date" id="date_" required><br>
+      
+      <label for="time_">Time (UTC):</label>
+      <input type="time" id="time_" required><br>
+      
+      <label for="tbd3">TBD 3:</label>
+      <input type="text" id="tbd3" required><br>
+      
+      <label for="tbd4">TBD 4:</label>
+      <input type="text" id="tbd4" required><br>
+      
+      <label for="tbd5">TBD 5:</label>
+      <select id="tbd5">
+        <option value="TBD5 1">TBD A</option>
+        <option value="TBD5 2">TBD B</option>
+        <option value="TBD5 3">TBD C</option>
+      </select><br>
+      
+      <label for="pirep">Pirep Info:</label>
+      <textarea id="pirep"></textarea><br>
+      
+      <button type="submit">Submit</button>
+    </form>
+  
+    <div id="adminSection" style="display: none;">
+      <h2>Admin Section</h2>
+      <div id="applications"></div>
+    </div>
+  </div>
+</body>
+</html>
