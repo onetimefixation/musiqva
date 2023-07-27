@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "start": "echo \"No server required. Open index.html directly in your browser.\""
+    "start": "node index.html"
   },
   "author": "",
   "license": "ISC",
