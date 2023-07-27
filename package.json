@@ -2,13 +2,12 @@
   "name": "virtualairlines",
   "version": "1.0.0",
   "description": "",
-  "main": "/index.html",
+  "main": "index.html",
   "scripts": {
     "start": "echo \"No server required. Open index.html directly in your browser.\""
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "serve": "^14.2.0"
   }
 }
