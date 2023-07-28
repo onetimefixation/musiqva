@@ -5,7 +5,7 @@ const serveStatic = require("serve-static");
 const app = express();
 
 // Set the MIME type for CSS files
-app.use('/assets/css', serveStatic.static(__dirname + '/assets/css', { type: 'text/css' }));
+app.use('/assets/css', express.static(__dirname + '/assets/css', { type: 'text/css' }));
 
 
 /* 
