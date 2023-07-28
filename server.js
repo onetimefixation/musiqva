@@ -17,10 +17,10 @@ app.use(express.static(path.join(__dirname, "/images")));
  */
 
 // Serve static files from the "assets" directory in the root folder
-app.use(serveStatic.static(path.join(__dirname, "assets")));
+app.use(serveStatic(path.join(__dirname, "assets")));
 
 // Serve static files from the "images" directory in the root folder
-app.use(serveStatic.static(path.join(__dirname, "images")));
+app.use(serveStatic(path.join(__dirname, "images")));
 
 
 // Serve the index.html file as the home page
