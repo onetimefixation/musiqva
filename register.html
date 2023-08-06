@@ -1,67 +1,72 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Registration Application</title>
-  <link rel="stylesheet" href="/assets/css/main.css" type="text/css" />
-  <link rel="stylesheet" href="/assets/css/register.css" type="text/css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <head>
+		<title>Untitled</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" type="text/css" />
+		<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   
-  <script src="register.js"></script>
+  <!-- <script src="register.js"></script> -->
+
+
 </head>
-<body>    
-  
-  <div class="header-content"></div>
-  <!-- Header -->
+<body  style="background-color: rgb(206, 35, 35)">    
 
+		<!-- Header -->
 
-        <header id="header" class="alt">
-          <!-- Move the logo to the left -->
-          <div class="left-logo-container">
-              <a href="index.html">
-                  <img src="images/qfLogo1nobkg.png" alt="Musiq Virtual Airlines">
-              </a>
-          </div>
-      
-          <nav id="nav">
-              <ul>
-                  <li><a href="index.html">Home</a></li>
-                  <!-- Commented out the other navigation items for simplicity -->
-                  <li><a href="logout.html">Log Out</a></li>
-              </ul>
-          </nav>
-      </header>
+		<header id="header" class="alt">
+			<div class="header-content">
+				
+				<h1><a href="index.html">Musiq <span>Virtual Airlines</span></a></h1>
+			</div>
+			<!-- Add the image logo here -->
+			<div class="logo-container">
+		
+		<img src="./images/qfLogo1nobkg.png" alt="Musiq Virtual Airlines">
+		
+			</div>
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+							
+								<li><a href="logout.html">Log Out</a></li>
+							</ul>
+						</nav>
+		</header>
 
-  <div class="container">
+  <div class="formcontainer">
     <h1>Registration Application</h1>
   
-    <form id="form">
+    <form id="form" action="http://localhost:3000/adduser" method="post">
+
       <label for="firstname">First Name:</label>
-      <input type="text" id="firstname" required><br>
+      <input type="text" id="firstname" name="firstname" required><br>
+
       
       <label for="lastname">Last Name:</label>
-      <input type="text" id="lastname" required><br>
-            
-      <label for="lastname">Pilot ID:</label>
-      <input type="text" id="pilotID" required><br>
+      <input type="text" id="lastname" name="lastname" required><br>
       
       <label for="country">Country:</label>
-      <input type="text" id="country" required><br>
+      <input type="text" id="country" name="country" required><br>
       
       <label for="age">Age:</label>
-      <input type="number" id="age" required><br>
+      <input type="number" id="age" name="age" required><br>
       
       <label for="email">Email:</label>
-      <input type="email" id="email" required><br>
+      <input type="email" id="email" name="email" required><br>
       
       <label for="location">Preferred Location:</label>
-      <select id="location">
+      <select id="location" name="location">
+        <option value="Undefined">Undefined</option>
         <option value="Location 1">Location 1</option>
         <option value="Location 2">Location 2</option>
         <option value="Location 3">Location 3</option>
       </select><br>
       
       <label for="additionalinfo">Additional Info:</label>
-      <textarea id="additionalinfo"></textarea><br>
+      <textarea id="additionalinfo" name="additionalinfo"></textarea><br>
       
       <button type="submit">Submit</button>
     </form>
