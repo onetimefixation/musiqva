@@ -2,17 +2,14 @@
 <html>
 
   <head>
-		<title>Untitled</title>
+		<title>AddFlightINfo</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" type="text/css" />
 		<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-  
-  <!-- <script src="register.js"></script> -->
-
 
 </head>
-<body  style="background-color: rgb(206, 35, 35)">    
+<body  style="background-color: rgb(247, 12, 12)">    
 
 		<!-- Header -->
 
@@ -39,43 +36,43 @@
   <div class="formcontainer">
     <h1>Add New Flight Information</h1>
   
-    <form id="form">
+    <form id="form" action="http://localhost:3000/add-flt-data" method="post">
       <label for="firstname">First Name:</label>
-      <input type="text" id="firstname" value="firstname prefilled" required><br>
+      <input type="text" id="firstname" name="firstname" value="firstname prefilled" required><br>
       
       <label for="lastname">Last Name:</label>
-      <input type="text" id="lastname" value="lastname prefilled" required><br>
+      <input type="text" id="lastname" name="lastname" value="lastname prefilled" required><br>
      
-      <label for="pilotID">Pilot ID:</label>
-      <input type="text" id="pilotID" value="pilotID prefilled" required><br>
+      <label for="callsign">Call Sign:</label>
+      <input type="text" id="callSign" name="callSign" value="callSign prefilled" required><br>
       
-      <label for="origin">Origin:</label>
-      <input type="text" id="origin" required><br>
+      <label for="origin">Flight Origin:</label>
+      <input type="text" id="origin" name="origin" required><br>
       
-      <label for="destination">Destination:</label>
-      <input type="text" id="destination" required><br>
+      <label for="destination">Flight Destination:</label>
+      <input type="text" id="destination" name="destination" required><br>
       
       <label for="date_">Date (UTC):</label>
-      <input type="date" id="date_" required><br>
+      <input type="date" id="date_" name="date_" required><br>
       
       <label for="time_">Time (UTC):</label>
-      <input type="time" id="time_" required><br>
+      <input type="time" id="time_" name="time_" required><br>
       
-      <label for="tbd3">TBD 3:</label>
-      <input type="text" id="tbd3" required><br>
+      <label for="tbd3">TBD 3:</label>  
+      <input type="text" id="tbd3" name="tbd3"><br>
       
       <label for="tbd4">TBD 4:</label>
-      <input type="text" id="tbd4" required><br>
+      <input type="text" id="tbd4" name="tbd4"><br>
       
       <label for="tbd5">TBD 5:</label>
-      <select id="tbd5">
+      <select id="tbd5" name="tbd5">
         <option value="TBD5 1">TBD A</option>
         <option value="TBD5 2">TBD B</option>
         <option value="TBD5 3">TBD C</option>
       </select><br>
       
       <label for="pirep">Pirep Info:</label>
-      <textarea id="pirep"></textarea><br>
+      <textarea id="pirep" name="pirep"></textarea><br>
       
       <button type="submit">Submit</button>
     </form>
