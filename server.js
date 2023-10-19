@@ -1,17 +1,22 @@
+
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+const fs = require('fs');
+const ejs = require('ejs');
+
+require('dotenv').config();
+
 
 // Add the express.static() middleware to serve static files
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 app.use('/', express.static(__dirname));
+//app.use('./assets', express.static('./assets', { 'extensions': ['css'] }));
 
 const { MongoClient, ObjectId, ServerApiVersion } = require('mongodb');
-const uri = 'mongodb+srv://MrBeckHam187:squ1rrelsClimbandH1dePecans)@musiqvp.q02lkpj.mongodb.net/?retryWrites=true&w=majority';
+const uri = process.env.URI_ENV;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -22,12 +27,17 @@ const client = new MongoClient(uri, {
   }
 });
 
+// Serve static assets (CSS files, images, etc.)
+app.use('/fltdata/assets', express.static(__dirname + '/assets'));
+
+// Add the body-parser middleware to parse the request body
+app.use(bodyParser.urlencoded({ extended: false }));
+
 const userRouter = require('./routes/users')
 const fltdataRouter = require('./routes/fltdata')
 
 app.use('/users', userRouter);
 app.use('/fltdata', fltdataRouter);
-
 
 async function run() {
   try {
@@ -41,10 +51,7 @@ async function run() {
     await client.close();
   }
 }
-
-
 // Start the server
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);

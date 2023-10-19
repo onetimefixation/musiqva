@@ -2,16 +2,40 @@
 <html>
 <head>
     <title>Flight Record Detail</title>
+
+    <style>
+			/* Define a container with specific dimensions and center it */
+			.container {
+				width: 800px; /* Adjust the width as needed */
+        margin: 300px auto 0; /* Add 50px top margin to push it down */
+				padding: 20px; /* Add padding to create white space around the content */
+				background-color: rgba(255, 255, 255, 0.4); /* Set the background color with opacity */
+				border: 1px solid #ccc; /* Add a border for a box effect */
+				border-radius: 5px; /* Add rounded corners */
+			}
+	
+			/* Style the header and forms */
+			.container h1 {
+				text-align: center;
+			}
+	
+			.container form {
+				text-align: center;
+			}
+		</style>
 </head>
-<body>
+<body style="background-color: red;">
+
+  <div class="container">
+
     <h1>Flight Record Detail</h1>
-    <form id="updateForm" action="/updte-flt-data/<%= record._id %>" method="POST">
-        <label for="firstname">First Name:</label>
+    <form id="updateForm" action="/fltdata/updte-flt-data/?<%= record._id %>" method="POST">
+
+      <label for="firstname">First Name:</label>
         <input type="text" id="firstname" name="firstname" value="<%= record.firstname %>" required><br>
-        <!-- Other form fields here -->
         <label for="lastname">Last Name:</label>
         <input type="text" id="lastname" name="lastname" value="<%= record.lastname %>" required><br>
-        <label for="callsign">Call Sign:</label>
+         <label for="callsign">Call Sign:</label>
         <input type="text" id="callsign" name="callsign" value="<%= record.callsign %>" ><br>
         <label for="origin">Origin:</label>
         <input type="text" id="origin" name="origin" value="<%= record.origin %>" required><br>
@@ -28,35 +52,43 @@
         <label for="tbd5">tbd5:</label>
         <input type="text" id="tbd5" name="tbd5" value="<%= record.tbd5 %>"><br>
         <label for="pirep">Pirep:</label>
-        <input type="text" id="pirep" name="pirep" value="<%= record.pirep %>"><br>
+        <input type="text" id="pirep" name="pirep" value="<%= record.pirep %>"><br> 
 
         <button type="submit">Save Changes</button>
+
+<br><br>
+This page will be formatted later.  Also it will be modified to properly update the data and go to the appropriate screen.
+
     </form>
 
-    <script>
+     <script>
         const updateForm = document.getElementById('updateForm');
-        const recordId = '${record._id};'
+        const recordId = '<%= record._id %>';
 
         updateForm.addEventListener('submit', async (event) => {
-            event.preventDefault();
+          event.preventDefault();
+      
+          const formData = new FormData(updateForm);
+          try {
 
-            const formData = new FormData(updateForm);
+      const response = await fetch(`/fltdata/updte-flt-data`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+              },
+            body: new URLSearchParams(formData),
+    });
 
-            try {
-                const response = await fetch(`http://localhost:3000/updte-flt-data/<%= record._id %>`, {
-                    method: 'PUT',
-                    body: formData,
-                });
-
-                if (response.ok) {
-                    console.log('Flight data updated successfully');
-                } else {
-                    console.error('Error updating flight data');
-                }
-            } catch (error) {
-                console.error('Error updating flight data:', error);
+            if (response.ok) {
+              console.log('Flight data updated successfully');
+            } else {
+              console.error('Error updating flight data');
             }
+          } catch (error) {
+            console.error('Error updating flight data:', error);
+          }
         });
-    </script>
+      </script>
+</div>
 </body>
 </html>

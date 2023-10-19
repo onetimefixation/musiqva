@@ -108,6 +108,7 @@ input, select, textarea {
 
 	.formcontainer input {
 		background-color: black; /* Set background color to black */
+		font-size: 25px;  /* This is where I set the size of the input field */
 		}
 
 	body {
@@ -128,7 +129,7 @@ input, select, textarea {
 	body, input, select, textarea {
 		color: #edeaea;
 		font-family: "Lato", Helvetica, sans-serif;
-		font-size: 20pt;
+		font-size: 15pt;
 		font-weight: 300;
 		line-height: 1.75em;
 	}

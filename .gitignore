@@ -1,0 +1,5 @@
+.env
+node_modules
+dotenv
+fsacars
+._loginHTMLFiles

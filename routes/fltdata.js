@@ -1,11 +1,16 @@
 const express = require('express');
+//const bodyParser = require('body-parser');
+const app = express();
+
 const router = express.Router();
 const fs = require('fs');
 const ejs = require('ejs');
-const path = require('path');
+
+
+//app.use(bodyParser.urlencoded({ extended: false }));
 
 const { MongoClient, ObjectId, ServerApiVersion } = require('mongodb');
-const uri = 'mongodb+srv://MrBeckHam187:squ1rrelsClimbandH1dePecans)@musiqvp.q02lkpj.mongodb.net/?retryWrites=true&w=majority';
+const uri = process.env.URI_ENV;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -18,6 +23,7 @@ const client = new MongoClient(uri, {
 
 router.post('/add-flt-data', async (req, res) => {
   
+
     try {
       // Connect to the database
        await client.connect();
@@ -45,8 +51,8 @@ router.post('/add-flt-data', async (req, res) => {
    tbd5,
    pirep
   };
-  
-    // Use await and wrap the insertOne operation in a try-catch block
+    
+  // Use await and wrap the insertOne operation in a try-catch block
     try {
       await collection.insertOne(flightData);
   
@@ -65,8 +71,27 @@ router.post('/add-flt-data', async (req, res) => {
     }
   });
   
-  router.put('/updte-flt-data', async (req, res) => {
-    console.log("Here I am")
+router.post('/updte-flt-data', async (req, res) => {
+
+const {
+  firstname,
+  lastname,
+  callsign,
+  origin,
+  destination,
+  date_,
+  time_,
+  tbd3,
+  tbd4,
+  tbd5,
+  pirep
+} = req.body;
+
+//console.log('Req Body = ', req.body)
+console.log('firstname = ', req.body.firstname);
+console.log('Last = ', req.body.lastname)
+console.log('Call Sign = ', req.body.callsign)
+
     try {
       // Connect to the database
        await client.connect();
@@ -75,29 +100,26 @@ router.post('/add-flt-data', async (req, res) => {
   
       const database = client.db('musiqvp-db'); 
       const collection = database.collection('users'); 
-  
-  // ***************** Logic to update a user record goes here *************// 
-    
-  const { firstname, lastname, callsign, origin, destination, date_, time_, tbd3, tbd4, tbd5, pirep } = req.body;
-  
-  // destructure the req.body //
-  const flightData = {
-   firstname,
-   lastname,
-   callsign,
-   origin,
-   destination,
-   date_,
-   time_,
-   tbd3,
-   tbd4,
-   tbd5,
-   pirep
-  };
-  
-    // Use await and wrap the insertOne operation in a try-catch block
+
     try {
-      await collection.updateOne(flightData);
+      
+await collection.updateOne(
+            { _id: new ObjectId(req.body._id) },
+            {$set: {
+              firstname,
+              lastname,
+              callsign,
+              origin,
+              destination,
+              date_,
+              time_,
+              tbd3,
+              tbd4,
+              tbd5,
+              pirep
+            }
+          }
+            );
   
       res.send(`
       <!DOCTYPE html>
@@ -198,10 +220,33 @@ router.post('/add-flt-data', async (req, res) => {
             th {
                 background-color: #f2f2f2;
             }
+
+            /* Define a container with specific dimensions and center it */
+            .container {
+              width: 900px; /* Adjust the width as needed */
+              margin: 0 auto; /* Center the container horizontally */
+              padding: 20px; /* Add padding to create white space around the content */
+              background-color: rgba(255, 255, 255, 0.4); /* Set the background color with opacity */
+              border: 1px solid #ccc; /* Add a border for a box effect */
+              border-radius: 5px; /* Add rounded corners */
+              background-color: #f2f2f2;
+            }
+        
+            /* Style the header and forms */
+            .container h1 {
+              text-align: center;
+            }
+        
+            .container form {
+              text-align: center;
+            }
         </style>
     </head>
-    <body>
-        <h1>Pilot Flight Records</h1>
+    <body style="background-color: red;">
+   
+    <div class="container">
+
+        <h1>Pilot Flight Records (the appearance of the screens will be improved once the funtionality is done. </h1>
         <table>
             <thead>
                 <tr>
@@ -221,6 +266,9 @@ router.post('/add-flt-data', async (req, res) => {
             </thead>
             <tbody>${recordListHTML}</tbody>
         </table>
+
+      <div class="container">
+
     </body>
     </html>
   `;
@@ -275,9 +323,6 @@ router.post('/add-flt-data', async (req, res) => {
 
         const record = await collection.findOne({ _id: id });
      
-
-
-
 
     const htmlContent = fs.readFileSync('./flt-detail-record.html', 'utf8');
 
