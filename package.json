@@ -16,9 +16,7 @@
     "mongodb": "^5.7.0",
     "mongodb-legacy": "^5.0.0",
     "multer": "^1.4.5-lts.1",
-    "serve-static": "^1.15.0"
-  },
-  "devDependencies": {
+    "serve-static": "^1.15.0",
     "dotenv": "^16.3.1"
   }
 }
