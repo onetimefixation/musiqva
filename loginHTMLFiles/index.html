@@ -12,7 +12,7 @@
 				width: 800px; /* Adjust the width as needed */
 				margin: 0 auto; /* Center the container horizontally */
 				padding: 20px; /* Add padding to create white space around the content */
-				background-color: rgba(255, 255, 255, 0.4); /* Set the background color with opacity */
+				background-color: rgb(225 51 51 / 90%); /* Set the background color with opacity */
 				border: 1px solid #ccc; /* Add a border for a box effect */
 				border-radius: 5px; /* Add rounded corners */
 			}
@@ -36,28 +36,29 @@
 		<!-- Header -->
 
 		<h1>Sign In</h1>
-		<p>Eventually this will check for a valid user.  In the meantime hitting SIGN IN will go to the next page.</p>
+		
 	</header>
 
 			<header id="header"></header>
 
 <!-- Sign in Form -->
 
-	<form id="signin-form" action="../logged-in.html">
-		<input type="email" name="email" id="email" placeholder="Email Address" />
+	<form id="signin-form" action="/users/login" method="post">
+		<input type="username" name="username" id="username" placeholder="Email Address" />
+		<input type="password" name="password" id="password" placeholder="Password" />
 		<input type="submit" value="Sign In" />
 	</form>
 
-				<h1>Sign Up</h1>
-				<p>Eventually this will check for a valid user. Not yet available.</p>
-			</header>
+		<center>		
+				<p>Don't have a qfMusiqVA account?  Register here.</p>
+			<!-- </header> -->
 
 		<!-- Sign up Form -->
-			<form id="signup-form" action="../logged-in.html">
-				<input type="email" name="email" id="email" placeholder="Email Address" />
-				<input type="submit" value="Sign Up" />
+			<form id="register-here-form" action="../register.html">
+				<!-- <input type="email" name="email" id="email" placeholder="Email Address" /> -->
+				<input type="submit" value="Register Here" />
 			</form>
-
+		</center>
 		<!-- Footer -->
 			<!-- <footer id="footer">
 				<ul class="icons">

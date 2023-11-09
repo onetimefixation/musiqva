@@ -37,14 +37,17 @@
     <h1>Add New Flight Information</h1>
   
     <form id="form" action="/fltdata/add-flt-data" method="post">
+      
+      <input type="hidden" id="userId" name="userId" value="${userId}">
+
       <label for="firstname">First Name:</label>
-      <input type="text" id="firstname" name="firstname" value="firstname prefilled" required><br>
+      <input type="text" id="firstname" name="firstname" value="" required><br>
       
       <label for="lastname">Last Name:</label>
-      <input type="text" id="lastname" name="lastname" value="lastname prefilled" required><br>
+      <input type="text" id="lastname" name="lastname" value="" required><br>
      
       <label for="callsign">Call Sign:</label>
-      <input type="text" id="callSign" name="callSign" value="callSign prefilled" required><br>
+      <input type="text" id="callSign" name="callSign" value="" required><br>
       
       <label for="origin">Flight Origin:</label>
       <input type="text" id="origin" name="origin" required><br>
@@ -82,5 +85,27 @@
       <div id="applications"></div>
     </div>
   </div>
+
+  <script>
+    // Get the query string from the URL
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+  
+    // Get the value of the 'userId' parameter
+    const userId = urlParams.get('userId');
+  
+    // Check if userId is defined and has a value
+    if (userId) {
+      // If userId is defined, render the input field with its value
+      const userIdInput = document.getElementById('userId');
+      userIdInput.value = userId;
+    }
+
+    /* document.getElementById("adminSection").style.display = "none"; */
+
+
+  </script>
+  
+
 </body>
 </html>

@@ -13,7 +13,7 @@
 
 </head>
 	<body class="landing is-preload" style="background-color: rgb(206, 35, 35)">
-
+		
  <!-- Header -->
 
  <header id="header" class="alt">
@@ -43,7 +43,7 @@
 				<div class="loggedincontainer">
 					<header class="major">
 						<h2>Musiq Virtual Airlines</h2>
-                        <p>Once logged in, the user can perform these Virtual Pilot Functions</p>
+                        
 					</header>
 					<div class="row">
 						<div class="col-4 col-6-medium col-12-small">
@@ -52,7 +52,7 @@
 								<h3>Add New Flight Information</h3>
 								<p>Enter information about a recently completed flight.</p>
 								<ul class="actions special">
-									<li><a href="addnew.html" class="button">Start</a></li>
+								<li><a id="dynamicLink_addNew" href="#" class="button">Start</a></li>
 								</ul>
 							</article>
 						</div>
@@ -62,8 +62,8 @@
 								<h3>View/Update Previous Activity</h3>
 								<p>This is where you can view and/or update previous flight information.</p>
 								<ul class="actions special">
-									<!-- <li><a href="http://localhost:3000/edit-record/:id" class="button">Start</a></li> -->
-									<li><a href="/fltdata/get-pilot-flight-records" class="button">Start</a></li>
+									<li><a id="dynamicLink_updatePrevious" href="#" class="button">Start</a></li>
+
 								</ul>
 							</article>
 						</div>
@@ -130,7 +130,7 @@
 					<li><a href="#">Contact</a></li>
 				</ul>
 				<span class="copyright">
-					&copy; Untitled. All rights reserved.
+					&copy; qfMusic Virtual Airlines. All rights reserved.
 				</span>
 			</footer>
 
@@ -144,6 +144,25 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				// Get the query string from the URL
+				const queryString = window.location.search;
 
+				// Create a URLSearchParams object to parse the query string
+				const urlParams = new URLSearchParams(queryString);
+			  
+				// Get the value of the 'userId' parameter from the query string
+				const userId = urlParams.get('userId');
+			  
+				// Get the link element by its ID
+				const newFlightLink = document.getElementById('dynamicLink_addNew');
+				const updatePreviousFlights = document.getElementById('dynamicLink_updatePrevious');
+			  
+				// Set the href attribute of the link to include the userId
+				dynamicLink_addNew.href = `addnew.html?userId=${userId}`;
+				dynamicLink_updatePrevious.href = `/fltdata/get-pilot-flight-records?userId=${userId}`;
+			  </script>
+
+			  
 	</body>
 </html>

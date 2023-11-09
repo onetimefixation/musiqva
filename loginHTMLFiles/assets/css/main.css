@@ -179,7 +179,7 @@ input, select, textarea {
 		transition: opacity 2s ease-in-out;
 		height: 100%;
 		left: 0;
-		opacity: 0.375;
+		opacity: .8;
 		position: fixed;
 		top: 0;
 		width: 100%;
@@ -315,7 +315,7 @@ input, select, textarea {
 /* Type */
 
 	body, input, select, textarea {
-		color: rgba(255, 255, 255, 0.75);
+		color: rgb(245 245 245 / 129%);
 		font-family: "Roboto", sans-serif;
 		font-size: 16pt;
 		font-weight: 400;
@@ -393,7 +393,7 @@ input, select, textarea {
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: #060606;
+		color: #000000;
 		font-weight: 700;
 		line-height: 1em;
 		margin: 0 0 1em 0;

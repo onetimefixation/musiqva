@@ -6,9 +6,6 @@ const router = express.Router();
 const fs = require('fs');
 const ejs = require('ejs');
 
-
-//app.use(bodyParser.urlencoded({ extended: false }));
-
 const { MongoClient, ObjectId, ServerApiVersion } = require('mongodb');
 const uri = process.env.URI_ENV;
 
@@ -31,14 +28,17 @@ router.post('/add-flt-data', async (req, res) => {
     // Connect to the database
   
       const database = client.db('musiqvp-db'); 
-      const collection = database.collection('users'); 
+      const collection = database.collection('musiqvp-coll-flt-data'); 
   
   // ***************** Logic to add a user record goes here *************// 
     
-   const { firstname, lastname, callsign, origin, destination, date_, time_, tbd3, tbd4, tbd5, pirep } = req.body;
-  
+   const { userId, firstname, lastname, callsign, origin, destination, date_, time_, tbd3, tbd4, tbd5, pirep } = req.body;
+
+//console.log( "User ID = ", userId)
+
   // destructure the req.body //
   const flightData = {
+   userId,
    firstname,
    lastname,
    callsign,
@@ -73,6 +73,7 @@ router.post('/add-flt-data', async (req, res) => {
   
 router.post('/updte-flt-data', async (req, res) => {
 
+
 const {
   firstname,
   lastname,
@@ -87,10 +88,6 @@ const {
   pirep
 } = req.body;
 
-//console.log('Req Body = ', req.body)
-console.log('firstname = ', req.body.firstname);
-console.log('Last = ', req.body.lastname)
-console.log('Call Sign = ', req.body.callsign)
 
     try {
       // Connect to the database
@@ -99,7 +96,7 @@ console.log('Call Sign = ', req.body.callsign)
     // Connect to the database
   
       const database = client.db('musiqvp-db'); 
-      const collection = database.collection('users'); 
+      const collection = database.collection('musiqvp-coll-flt-data'); 
 
     try {
       
@@ -177,11 +174,14 @@ await collection.updateOne(
         // Connect to the database
         await client.connect();
         const database = client.db('musiqvp-db');
-        const collection = database.collection('users');
-  
-        // Retrieve records
-        const records = await collection.find({}).toArray();
+        const collection = database.collection('musiqvp-coll-flt-data');
         
+        // Retrieve the userId parameter from the query string
+        const userId = req.query.userId; // Assuming the userId is passed as a query parameter
+        
+        // Retrieve records that match the userId
+        const records = await collection.find({ userId }).toArray();
+
 
   // Generate HTML for the record list
   const recordListHTML = records.map(record => {
@@ -207,6 +207,7 @@ await collection.updateOne(
     <html>
     <head>
         <title>Record List</title>
+        <link rel="stylesheet" href="../assets/css/main.css" type="text/css" />
         <style>
             table {
                 width: 100%;
@@ -226,10 +227,13 @@ await collection.updateOne(
               width: 900px; /* Adjust the width as needed */
               margin: 0 auto; /* Center the container horizontally */
               padding: 20px; /* Add padding to create white space around the content */
-              background-color: rgba(255, 255, 255, 0.4); /* Set the background color with opacity */
+              background-color: rgb(247 8 8 / 8%); /* Set the background color with opacity */
               border: 1px solid #ccc; /* Add a border for a box effect */
               border-radius: 5px; /* Add rounded corners */
-              background-color: #f2f2f2;
+              background-color: #000000;
+            }
+            .container {
+              margin-top: 100px; /* Adjust the margin-top value to control the spacing */
             }
         
             /* Style the header and forms */
@@ -243,10 +247,27 @@ await collection.updateOne(
         </style>
     </head>
     <body style="background-color: red;">
-   
+    <header id="header" class="alt">
+    <div class="header-content">
+      
+      <h1><a href="../index.html">Musiq <span>Virtual Airlines</span></a></h1>
+    </div>
+    <!-- Add the image logo here -->
+    <div class="logo-container">
+  
+  <img src=".././images/qfLogo1nobkg.png" alt="Musiq Virtual Airlines">
+  
+    </div>
+          <nav id="nav">
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+            
+              <li><a href="../logout.html">Log Out</a></li>
+            </ul>
+          </nav>
+  </header>
     <div class="container">
 
-        <h1>Pilot Flight Records (the appearance of the screens will be improved once the funtionality is done. </h1>
         <table>
             <thead>
                 <tr>
@@ -267,7 +288,15 @@ await collection.updateOne(
             <tbody>${recordListHTML}</tbody>
         </table>
 
-      <div class="container">
+      <center><button id="previousPage" onclick="goBack()">Return to Previous Page</button></center>
+
+      <script>
+          function goBack() {
+              window.history.back(); // This will navigate back to the previous page
+          }
+      </script>
+
+
 
     </body>
     </html>
@@ -290,7 +319,7 @@ await collection.updateOne(
     try {
         await client.connect();
         const database = client.db('musiqvp-db');
-        const collection = database.collection('users');
+        const collection = database.collection('musiqvp-coll-flt-data');
 
         const id = new ObjectId(req.params.id);
         const record = await collection.findOne({ _id: id });
@@ -310,42 +339,4 @@ await collection.updateOne(
     }
 });
 
-  /* router.get('/edit-record/:id', async (req, res) => {
-    try {
-  
-        await client.connect();
-        const database = client.db('musiqvp-db');
-        const collection = database.collection('users');
-  
-    // Convert the id parameter to ObjectId 
-  
-        const id = new ObjectId(req.params.id);
-
-        const record = await collection.findOne({ _id: id });
-     
-
-    const htmlContent = fs.readFileSync('./flt-detail-record.html', 'utf8');
-
-    // Replace placeholders in the HTML content with actual data
-    const editedHtmlContent =  htmlContent.replace('${record._id}', record._id)
-                                          .replace('${record.firstname}', record.firstname)
-                                          .replace('${record.lastname}', record.lastname)
-                                          .replace('${record.callsign}', record.callsign)
-                                          .replace('${record.origin}', record.origin)
-                                          .replace('${record.destination}', record.destination)
-                                          .replace('${record.date_}', record.date_)
-                                          .replace('${record.time_}', record.time_)
-                                          .replace('${record.tbd3}', record.tbd3)
-                                          .replace('${record.tbd4}', record.tbd4)                                          
-                                          .replace('${record.tbd5}', record.tbd5)   
-                                          .replace('${record.pirep}', record.pirep)   
-                                          
-        res.send(editedHtmlContent);        
-
-    } catch (error) {
-        console.error('Error reading data from MongoDB:', error);
-        res.status(500).json({ success: false, message: 'Error reading data from MongoDB' });
-    }
-  });
- */
   module.exports = router;

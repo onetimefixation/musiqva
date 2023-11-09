@@ -3,6 +3,13 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
+const session = require('express-session');
+
+app.use(session({
+  secret: 'yRscrtKee6am', // Change this to a secret key
+  resave: false,
+  saveUninitialized: true,
+}));
 
 const fs = require('fs');
 const ejs = require('ejs');
