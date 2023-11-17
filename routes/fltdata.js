@@ -117,7 +117,7 @@ await collection.updateOne(
             }
           }
             );
-  
+
       res.send(`
       <!DOCTYPE html>
         <html>
@@ -325,6 +325,9 @@ await collection.updateOne(
         const record = await collection.findOne({ _id: id });
 
         const templatePath = './edit-flt-detail.ejs';
+
+//console.log("*******************")
+
         ejs.renderFile(templatePath, { record }, (err, html) => {
             if (err) {
                 console.error('Error rendering EJS template:', err);
