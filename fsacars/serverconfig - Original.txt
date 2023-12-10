@@ -1,0 +1,18 @@
+http://fsacars.com/demo/userquery.php
+http://fsacars.com/demo/posrep.php
+http://fsacars.com/demo/pirep.php
+http://fsacars.com/demo/reports/
+demo
+
+# Only the first 5 lines of this file are read by acars:
+# Line 1: URL of userquery script
+# Line 2: URL of position reporting script
+# Line 3: URL of the pilot report script
+# Line 4: URL of the location where pilot reports are stored
+# Line 5: server authentication token 
+#
+# Example files are included, and pre-configured for the fsacars.com servers.
+# Each file has comments and details about how to configure for you server.
+# For more information please check the readme.txt file
+
+

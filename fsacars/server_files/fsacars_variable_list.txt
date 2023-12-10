@@ -1,0 +1,67 @@
+
+actualNM = flight path distance, NM
+aircraft = aircraft titleline from aircraft.cfg file 
+atcData = delimited ATC data: "/Identifier/Flight Number/Airline/Type/"
+atcModel = aircraft model; typically an ICAO identifier; may be blank for FS9; may indicate FSX for X-Plane
+auth = server authentication code (serverconfig.txt, line 3)
+blockfuel = total fuel used, lbs
+blocktime =  block time, decimal hours (i.e., timein minus timeout)
+crashed = crash detection, 1=crashed.
+dateshort = formatted date (MM/DD/YY)
+datestamp = unix epoch UTC
+directNM = great circle distance, NM
+enroutefuel = from takeoff to landing, lbs
+fsVersion = flight sim version as reported by fsacars (note that fsuipc sends x-plane version as FSX)
+fstimein = UTC time in flight simulator when Stop button is pressed (HHMM)
+fstimeoff = UTC time in flight simulator takeoff (HHMM)
+fstimeon = UTC time in flight simulator landing (HHMM)
+fstimeout = UTC time in flight simulator when Start button is pressed (HHMM)
+fueldiff = fuel used, pounds
+fuelstart = starting fuel weight, pounds
+fuelstop = ending fuel weight, pounds
+gmax = maximum g-force
+gmin = minimum g-force
+landingFPS = landing vertical speed, feet per minute
+landingFR =  weather during final approach (VFR, MVFR, IFR, or LIFR)
+landingKTS = landing speed, knots
+landingLBS = landing weight, pounds
+lat1 =  origin latitude, decimal degrees, +N,-S
+lat2 =  destination latitude, decimal degrees, +N,-S
+latland = destination landing latitude, decimal degrees, +N,-S
+lon1 =  origin longitude, decimal degrees, -W, +E
+lon2 =  destination longitude, decimal degrees,-W +E
+lonland = destination landing longitude, decimal degrees, +N,-S
+lsotxt = Landing Signal Offcier grades, delimited with semicolons. Grades are grades are based primarily on  AICarrier and TacPack glide slope angles (4.12 degrees). Server variable 'lso' contains grade(s) delimited with semicolon(s).  Grades are (highest to lowest): _OK_; OK; (OK); -; C.
+lsonum = numerical LSO scores corresponding to lsotxt ranging from 1 to 5; 5 = _OK_
+nofuel = nofuel detection,1=out of fuel
+oew =  operating epmty weight, pounds
+overspeed = aircraft overspeed tally, seconds
+pass = password entered in the password field
+pause =  pause tally, seconds
+payload = payload carried (difference landing weight and fuel remaining)
+pirep =  user flight comments, string
+refuel = refuel detection, 1=refueled.
+rollout = landing distance from wheels down to 30 GSKTS, feet
+simrate = simrate not equal to 1 tally, seconds
+slew =  slew tally, seconds
+speed10K = speed greater than 250 KTS below 10000 FT tally, seconds
+stall =  stall tally, seconds
+takeoffFR =  $_GET['takeoffFR'];  // flight rule: VFR, MVFR, IFR, or LIFR
+takeoffLBS = takeoff weight, pounds
+takeoffHWC = takeoff headwind (-tailwind) component, knots
+takeoffXWC = takeoff crosswind component, knots
+landingHWC = takeoff headwind (-tailwind) component, knots
+landingXWC = takeoff crosswind component, knots
+taxifuel = blockfuel minus enroutefuel
+timein = UTC time when acars Stop button is pressed (HH:MM:SS)
+timeoff = UTC time when acars detects takeoff (HH:MM:SS)
+timeon = UTC time when acars detects landing (HH:MM:SS)
+timeout = UTC time when acars Start button is pressed (HH:MM:SS)
+timoday =  time of day: "Day" or "Night" (based on flightsim)
+user = username or callsign entered in user field 
+version =  acars software version
+warpNM = unusual movement detection, NM
+windstart = wind direction (DDD) and speed (S) token in metar format (DDDSS)
+windstop = wind direction (DDD) and speed (S) token in metar format (DDDSS)
+zfw = zero fuel weight, pounds
+MILdiffLBS = ordinance (ie., takeoff weight - landing weight - fuel used)
