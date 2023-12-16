@@ -4,7 +4,7 @@ require 'vendor/autoload.php'; // Ensure the MongoDB PHP driver is included
 use MongoDB\Client;
 
 // Initialize MongoDB connection
-$mongoClient = new MongoDB\Client('mongodb+srv://MrBeckHam187:squ1rrelsClimbandH1dePecans>@musiqvp.q02lkpj.mongodb.net/?retryWrites=true&w=majority');
+$mongoClient = new MongoDB\Client('credentials go here');
 
 try {
     // Send a ping to confirm a successful connection
